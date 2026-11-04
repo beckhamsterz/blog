@@ -10,7 +10,7 @@ params:
   homeInfoParams:
     enabled: true
     Title: "Hi, I'm Beckham! :)"
-    Content: "Security Consultant at Aura Infosec. Passionate about cybersecurity/penetration testing, certified with OSCP, HTB CPTS and HTB CWES and working toward OSEP. Outside of that, I enjoy building split keyboards, weightlifting, running, badminton and somehow collect alot of random stuff pokemon tcg, fragrances, and pop vinyls/mart figures."
+    Content: "Security Consultant at Aura Infosec. Passionate about cybersecurity/penetration testing, certified with OSCP, HTB CPTS and HTB CWES and working toward OSEP. Outside of that, I enjoy building split keyboards, weightlifting, running, badminton and somehow collect alot of random stuff like pokemon/naruto cards, fragrances, and pop vinyls/mart figures."
   socialIcons:
     - name: "Github"
       url: "https://github.com/beckhamsterz"
