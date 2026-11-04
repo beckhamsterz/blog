@@ -10,12 +10,12 @@ params:
   homeInfoParams:
     enabled: true
     Title: "Hi, I'm Beckham! :)"
-    Content: "Security Consultant at Aura Infosec. Passionate about cybersecurity, certified with HTB CWES and working toward OSCP and HTB CPTS. Outside of that, I build split keyboards, lift heavy circles (weightlifting), running, badminton, and somehow collect both Pokemon and fragrances. Oh, and terrible at chess haha."
+    Content: "Security Consultant at Aura Infosec. Passionate about cybersecurity/penetration testing, certified with OSCP, HTB CPTS and HTB CWES and working toward OSEP. Outside of that, I enjoy building split keyboards, weightlifting, running, badminton and somehow collect alot of random stuff pokemon tcg, fragrances, and pop vinyls/mart figures."
   socialIcons:
     - name: "Github"
-      url: "https://github.com/notbeckhamster"
+      url: "https://github.com/beckhamsterz"
     - name: "HackTheBox"
-      url: "https://app.hackthebox.com/profile/1380692"
+      url: "https://profile.hackthebox.com/profile/019e5dd3-8d9d-711f-8650-4c92595e3d81"
     - name: "Linkedin"
       url: "https://www.linkedin.com/in/beckham-wilson-ab841a224/"
     - name: "email"
