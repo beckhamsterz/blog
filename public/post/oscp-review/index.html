@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>OSCP Review &#43; Tips :) | Beckhamsterz Blog</title>
+<meta name="keywords" content="">
+<meta name="description" content="
+Introduction
+The OSCP (OffSec Certified Professional) is OffSec&rsquo;s junior pentesting cert: the PEN-200 course plus an exam covering web, privilege escalation, pivoting and Active Directory.
+The exam has two parts:
+
+Hacking phase: 23 hours 45 minutes, proctored.
+Reporting phase: another 24 hours to submit your report.
+
+You can skip the course material and videos and focus on labs instead. That&rsquo;s part of how I passed in under a month.">
+<meta name="author" content="Beckham">
+<link rel="canonical" href="//localhost:1313/post/oscp-review/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.343cc480b9ffc8f04ccbe5e968ad674880cab773ec19905e93033065c1e7a804.css" integrity="sha256-NDzEgLn/yPBMy&#43;XpaK1nSIDKt3PsGZBekwMwZcHnqAQ=" rel="preload stylesheet" as="style">
+<link rel="icon" href="//localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="//localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="//localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="//localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="//localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="//localhost:1313/post/oscp-review/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="//localhost:1313/" accesskey="h" title="Beckhamsterz Blog (Alt + H)">Beckhamsterz Blog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      OSCP Review &#43; Tips :)
+    </h1>
+    <div class="post-meta"><span title='2026-11-06 00:37:49 +1300 NZDT'>November 6, 2026</span>&nbsp;·&nbsp;<span>Beckham</span>
+
+</div>
+  </header> <div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#introduction" aria-label="Introduction">Introduction</a></li>
+                <li>
+                    <a href="#before-you-start" aria-label="Before You Start">Before You Start</a></li>
+                <li>
+                    <a href="#my-background--preparation" aria-label="My Background &amp; Preparation">My Background &amp; Preparation</a><ul>
+                        
+                <li>
+                    <a href="#labs-worth-doing" aria-label="Labs worth doing">Labs worth doing</a></li></ul>
+                </li>
+                <li>
+                    <a href="#what-the-exam-is-actually-like" aria-label="What the Exam Is Actually Like">What the Exam Is Actually Like</a><ul>
+                        
+                <li>
+                    <a href="#pivoting-with-ligolo-ng" aria-label="Pivoting with Ligolo-ng">Pivoting with Ligolo-ng</a></li>
+                <li>
+                    <a href="#windows-privesc" aria-label="Windows privesc">Windows privesc</a></li></ul>
+                </li>
+                <li>
+                    <a href="#my-exam-timeline" aria-label="My Exam Timeline">My Exam Timeline</a></li>
+                <li>
+                    <a href="#key-tips--tricks" aria-label="Key Tips &amp; Tricks">Key Tips &amp; Tricks</a></li>
+                <li>
+                    <a href="#final-thoughts" aria-label="Final Thoughts">Final Thoughts</a><ul>
+                        
+                <li>
+                    <a href="#useful-tools-and-links-" aria-label="Useful Tools and Links :)">Useful Tools and Links :)</a></li>
+                <li>
+                    <a href="#enumeration" aria-label="Enumeration">Enumeration</a></li>
+                <li>
+                    <a href="#shells--payloads" aria-label="Shells &amp; Payloads">Shells &amp; Payloads</a></li>
+                <li>
+                    <a href="#privilege-escalation" aria-label="Privilege Escalation">Privilege Escalation</a></li>
+                <li>
+                    <a href="#active-directory" aria-label="Active Directory">Active Directory</a></li>
+                <li>
+                    <a href="#file-transfers" aria-label="File Transfers">File Transfers</a></li>
+                <li>
+                    <a href="#pivoting" aria-label="Pivoting">Pivoting</a></li>
+                <li>
+                    <a href="#websites" aria-label="Websites">Websites</a></li>
+                <li>
+                    <a href="#other" aria-label="Other">Other</a>
+                </li>
+            </ul>
+            </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><p><img alt="alt text" loading="lazy" src="/post/oscp-review/images/image.png"></p>
+<h2 id="introduction">Introduction<a hidden class="anchor" aria-hidden="true" href="#introduction">#</a></h2>
+<p>The OSCP (OffSec Certified Professional) is OffSec&rsquo;s junior pentesting cert: the PEN-200 course plus an exam covering web, privilege escalation, pivoting and Active Directory.</p>
+<p>The exam has two parts:</p>
+<ul>
+<li><strong>Hacking phase:</strong> 23 hours 45 minutes, proctored.</li>
+<li><strong>Reporting phase:</strong> another 24 hours to submit your report.</li>
+</ul>
+<p>You can skip the course material and videos and focus on labs instead. That&rsquo;s part of how I passed in under a month.</p>
+<p><strong>Why I took it:</strong></p>
+<ul>
+<li>It&rsquo;s the cert recruiters ask for.</li>
+<li>I&rsquo;d already passed CWES and CPTS, and found the OSCP an easier version of the CPTS.</li>
+<li>My employer paid for it :) Thank you to Aura Infosec.</li>
+</ul>
+<h2 id="before-you-start">Before You Start<a hidden class="anchor" aria-hidden="true" href="#before-you-start">#</a></h2>
+<p><strong>Pricing:</strong> The PEN-200 bundle was about $1,749 USD, which includes 90 days of lab access and one exam attempt.</p>
+<p><strong>Who it&rsquo;s for:</strong> Not beginners. You should be comfortable with the Linux command line, Windows basics, core networking, and reading and modifying code. The course is also pretty dense for 90 days of lab access. Even with my background, it took a very focused month just to finish the challenge labs, without even reading the course material or doing the module labs.</p>
+<h2 id="my-background--preparation">My Background &amp; Preparation<a hidden class="anchor" aria-hidden="true" href="#my-background--preparation">#</a></h2>
+<ul>
+<li>BSc in Computer Science</li>
+<li>~2 years as a full stack developer, then ~6 months as a junior pentester</li>
+<li>CWES and CPTS passed</li>
+<li>~50 HackTheBox machines, ~25 Proving Grounds Play boxes</li>
+<li>All 10 PEN-200 challenge labs</li>
+<li>LainKusanagi OSCP-LK Practice Exam</li>
+</ul>
+<p>My CPTS training was probably the biggest help in preparing for the OSCP. Honestly, I&rsquo;d go as far as saying that anyone who has passed the CPTS should be able to pass the OSCP with relatively little additional practice. My dev background also made modifying exploit code easier, and day-to-day pentesting meant I was already familiar with the pentesting.</p>
+<p><img alt="alt text" loading="lazy" src="lion.png"></p>
+<p>I barely read the PEN-200 course material, mostly just dipping into it out of curiosity to learn about some of the out-of-scope techniques. I didn&rsquo;t solve every box alone either; I checked walkthroughs when I got stuck, spammed the Discord help channels quite a bit hahah, and generally tried to cover as many machines as possible.</p>
+<p>The challenge labs were useful but pretty unstable. I ran into VPN issues, mostly around MTU settings, and some services were just buggy. Some labs also felt poorly configured, with so many possible attack paths that I ended up repeating the same privesc checks over and over. Proving Grounds is a better use of your time than HTB, as the difficulty, style and exposure are closer to the actual exam.</p>
+<h3 id="labs-worth-doing">Labs worth doing<a hidden class="anchor" aria-hidden="true" href="#labs-worth-doing">#</a></h3>
+<p>OffSec&rsquo;s numbering, in order:
+0. Secura</p>
+<ol>
+<li>Medtech</li>
+<li>Relia</li>
+<li>Skylark</li>
+<li>OSCP A</li>
+<li>OSCP B</li>
+<li>OSCP C</li>
+<li>Zeus</li>
+<li>Poseidon</li>
+<li>Feast</li>
+<li>Laser</li>
+</ol>
+<p>Avoid the first four (0–3). The first three are very basic and offer very little exploitation experience, while Skylark is extremely unstable.</p>
+<p>OSCP A, B, and C (4–6) are the closest to the actual exam. OSCP-LK and Labs 7–10 are also worth doing. After completing those, focus the rest of your time on the Windows machines in Proving Grounds Play.</p>
+<p>If you&rsquo;re looking for something a bit more challenging, try some of the HTB boxes from TJ Null&rsquo;s or Lain&rsquo;s list.</p>
+<h2 id="what-the-exam-is-actually-like">What the Exam Is Actually Like<a hidden class="anchor" aria-hidden="true" href="#what-the-exam-is-actually-like">#</a></h2>
+<p><strong>Format:</strong> Six machines: three standalones worth 20 points each (10 for initial access, 10 for privesc) and a three-machine AD set worth 40. You need 70 to pass. (Note: After December 1, 2026, the scoring system will change.)</p>
+<p><strong>The machines:</strong> A wide mix of services (SNMP, POP3, RPC, SMB and others), but the vulnerabilities aren&rsquo;t exotic. Web is mostly basic payloads, with a lot of enumeration. The exploits aren&rsquo;t hard, but they do take some manual work.</p>
+<ul>
+<li><strong>The first PoC almost never works.</strong> Try several PoCs, change the IP and port, swap the payload, fix paths or version mismatches, and adapt from a writeup.</li>
+<li><strong>The AD set was the easiest part.</strong> It&rsquo;s a narrow slice of AD in the syllabus, but in my exam, and in OSCP A, B and C, it didn&rsquo;t really involve classic &ldquo;AD&rdquo; attacks.</li>
+<li><strong>Skip phishing, client side attacks, AWS, AD lateral movement and evasion.</strong> None of it came up.</li>
+</ul>
+<h3 id="pivoting-with-ligolo-ng">Pivoting with Ligolo-ng<a hidden class="anchor" aria-hidden="true" href="#pivoting-with-ligolo-ng">#</a></h3>
+<p>Learn this until it&rsquo;s automatic. Set up the tunnel and add a route to the internal subnet. For ports only listening locally on the pivot host, use <code>240.0.0.1</code>. Write your own step-by-step recipe in your notes.</p>
+<h3 id="windows-privesc">Windows privesc<a hidden class="anchor" aria-hidden="true" href="#windows-privesc">#</a></h3>
+<p><img alt="alt text" loading="lazy" src="/post/oscp-review/images/image4.png">
+Windows privesc is what you really need to focus on. Here&rsquo;s the routine I usually run, in order:</p>
+<ol>
+<li>Check <code>C:\</code> for non-default folders.</li>
+<li>Run <code>tree /F /A .</code> in <code>C:\Users\</code> and look for scripts, notes, backups and credentials.</li>
+<li>Check <code>Program Files</code> for non-default software.</li>
+<li>Run <code>whoami /all</code>, then PrivescCheck, then WinPEAS.</li>
+<li>Check scheduled tasks.</li>
+</ol>
+<p>For post-exploitation, credentials are usually sitting somewhere obvious:</p>
+<ul>
+<li>Scripts, batch files and scheduled task definitions</li>
+<li>PowerShell history (<code>ConsoleHost_history.txt</code>)</li>
+<li>The registry (saved RDP/autologon creds, PuTTY sessions)</li>
+<li>The local SAM database</li>
+<li><code>ProgramData</code> and <code>AppData</code> (app configs, saved sessions, cached creds)</li>
+<li>Config/<code>.ini</code>/<code>.xml</code>/<code>.env</code> files, especially web app and IIS configs</li>
+<li>Browser saved passwords</li>
+<li>Backup or <code>.bak</code> files, and databases</li>
+<li>Encrypted files (zips, archives, keepass vaults, private keys)</li>
+</ul>
+<h2 id="my-exam-timeline">My Exam Timeline<a hidden class="anchor" aria-hidden="true" href="#my-exam-timeline">#</a></h2>
+<ul>
+<li><strong>tldr:</strong> 5 hours (60 pts) -&gt; +5 hours (70 pts) -&gt; +3 hours (90pts)</li>
+<li><strong>yippee quick W&rsquo;s:</strong> Got to <strong>60 points</strong> (20 from AD, two standalones rooted) within about 5 hours.
+<img alt="alt text" loading="lazy" src="/post/oscp-review/images/image3.png"></li>
+<li><strong>pain and suffering -&gt; yippee:</strong> then spent another 5 hours trying to get the DC and user on the remaining standalone. Passed YIPPPEEE!!! Got <strong>70 points</strong> via user on the third standalone. I didn&rsquo;t enumerate one of the ports enough.</li>
+<li><strong>more pain and suffering (report):</strong> Spent a couple of hours that night writing the report.</li>
+<li><strong>huh Domain Admin without doing AD attacks:</strong> After some rest, I got the DC in a couple of hours. Finished with <strong>90/100</strong> points.</li>
+</ul>
+<p><img alt="alt text" loading="lazy" src="/post/oscp-review/images/waitimgoated.png"></p>
+<p>Stress-wise, I found the exam itself manageable, although I was pretty stressed during the preparation. There&rsquo;s a bit of a stigma around the OSCP being extremely difficult, which I don&rsquo;t entirely agree with. A lot of the machines felt like variations of things I&rsquo;d already practised. That said, the sheer amount of screen time from studying and sitting the exam was exhausting. By the end, I was pretty checked out, both physically and mentally.</p>
+<h2 id="key-tips--tricks">Key Tips &amp; Tricks<a hidden class="anchor" aria-hidden="true" href="#key-tips--tricks">#</a></h2>
+<ul>
+<li><strong>Focus on Windows foothold and privesc.</strong> AD alone is worth 40 points and is entirely Windows, so being solid on Windows gives you a big head start before you even touch the standalones. It&rsquo;s also sequential - get that first flag and the rest tends to follow, whereas missing it caps you at 60, an automatic fail. You&rsquo;ll likely only see 1-2 Windows standalones too, so a foothold (and ideally privesc) on those covers most of the rest of the points you need.</li>
+<li><strong>Get volume.</strong> Do lots of practice boxes to get comfortable with common services (HTTP, SMB, FTP, RPC, POP3, databases, etc.). Learn to recognise services, enumerate them properly, and spot misconfigurations.</li>
+<li><strong>Use walkthroughs.</strong> Give the labs an honest attempt, read the walkthrough when you get stuck, work out what you missed, and move on. Add what you learn to your notes.
+<img alt="alt text" loading="lazy" src="/post/oscp-review/images/thukuna.png"></li>
+<li><strong>Think dumber.</strong> The exploits are basic: simple web payloads (SQLi, command injection, LFI), public exploits, and weak or default credentials (<code>admin:admin</code>, username as password). Prioritise simple exploits/low-hanging fruit before attempting complex exploits.</li>
+<li><strong>Enumerate for what looks off:</strong> unusual ports, services that aren&rsquo;t normally installed, odd files. If you&rsquo;re stuck, enumerate again. Most stalls come from missed enumeration, not missing knowledge.</li>
+<li><strong>Post-exploitation to the moon.</strong> GOOOOO NUTS. Don&rsquo;t stop at a root shell. Loot file shares, check history files, configs, browser credentials stores, hunt for plaintext credentials in scripts, databases and the registry, and reuse anything you find across every other service and box. Then chain it into the next machine or the next privilege level.</li>
+<li><strong>Report as you go.</strong> Capture the necessary evidence while you&rsquo;re doing it.</li>
+</ul>
+<h2 id="final-thoughts">Final Thoughts<a hidden class="anchor" aria-hidden="true" href="#final-thoughts">#</a></h2>
+<p><img alt="alt text" loading="lazy" src="/post/oscp-review/images/gojo.png">
+The OSCP tested my persistence just as much as my technical skills. A lot of it comes down to sticking to your methodology, working through your notes, continuing to enumerate, and not giving up when you&rsquo;re stuck. Sometimes you just need to think dumber rather than try harder :)</p>
+<p>I found it much more manageable than its reputation suggests, especially coming from a CPTS background. If you&rsquo;ve passed the CPTS, you probably won&rsquo;t need much additional preparation. Focus on Windows (foothold + privesc), enumeration, pivoting and getting plenty of hands-on practice. Don&rsquo;t overcomplicate things.</p>
+<p>It&rsquo;s still a worthwhile cert to have on your CV, but don&rsquo;t buy into the dogma surrounding its difficulty.</p>
+<p>If you have any questions or just want to chat about the OSCP, feel free to reach out on LinkedIn or Instagram. Always happy to help where I can!</p>
+<p>Good luck!</p>
+<h3 id="useful-tools-and-links-">Useful Tools and Links :)<a hidden class="anchor" aria-hidden="true" href="#useful-tools-and-links-">#</a></h3>
+<h3 id="enumeration">Enumeration<a hidden class="anchor" aria-hidden="true" href="#enumeration">#</a></h3>
+<ul>
+<li><strong>Nmap</strong> - The standard port scanner.</li>
+<li><strong>feroxbuster</strong> - Directory brute-forcing with recursive search. dirb, ffuf and gobuster are also good alternatives.</li>
+</ul>
+<h3 id="shells--payloads">Shells &amp; Payloads<a hidden class="anchor" aria-hidden="true" href="#shells--payloads">#</a></h3>
+<ul>
+<li><strong>MSFvenom</strong> - Generates reverse shells, especially for executable payloads (<code>.exe</code>, <code>.elf</code>).</li>
+<li><strong>Netcat</strong> - Executing/listening for reverse shells, checking connectivity, transferring data.</li>
+<li><strong>rlwrap</strong> - Pairs with Netcat for proper keyboard input (arrow keys, backspace) on a reverse shell.</li>
+<li><strong>Evil-WinRM</strong> - Shell for when WinRM (port 5985) is open. Handles upload/download on its own.</li>
+<li><strong>xfreerdp3</strong> - An RDP client. The most stable one I used.</li>
+</ul>
+<h3 id="privilege-escalation">Privilege Escalation<a hidden class="anchor" aria-hidden="true" href="#privilege-escalation">#</a></h3>
+<ul>
+<li><strong>WinPEAS / LinPEAS / PrivescCheck</strong> - Automated privesc enumeration for Windows and Linux.</li>
+<li><strong>pspy</strong> - Monitors Linux processes without root, useful for Linux privesc.</li>
+<li><strong>mimikatz</strong> - Extracts credentials from Windows memory. Needs admin privileges.</li>
+<li><strong>John the Ripper / hashcat</strong> - Password cracking. hashcat is more feature-rich; fall back to John for hashes it doesn&rsquo;t support. Use the <code>*2john</code> scripts (<code>ssh2john</code>, <code>zip2john</code>, etc.) to generate crackable hashes.</li>
+</ul>
+<h3 id="active-directory">Active Directory<a hidden class="anchor" aria-hidden="true" href="#active-directory">#</a></h3>
+<ul>
+<li><strong>NetExec</strong> - Successor to CrackMapExec. Useful once you have credentials and need to find which hosts they work on. Has useful modules like <code>lsassy</code>, and can do basic AD operations like password resets.</li>
+<li><strong>BloodyAD</strong> - AD privilege abuse swiss-army knife: resets, ACL abuse, Kerberos tickets, and more.</li>
+<li><strong>BloodHound / SharpHound</strong> - Finds AD misconfigurations. BloodHound is easy to set up with Docker. Run <code>bloodhound-python</code> from Kali or <code>SharpHound.exe</code> from within Windows to collect.</li>
+<li><strong>Impacket</strong> - Core toolkit. Most used:
+<ul>
+<li><code>impacket-psexec</code> - PsExec</li>
+<li><code>impacket-GetUserSPNs</code> - Kerberoasting</li>
+<li><code>impacket-GetNPUsers</code> - AS-REP Roasting</li>
+<li><code>impacket-mssqlclient</code> - MSSQL client</li>
+<li><code>impacket-secretsdump</code> - alternative to <code>mimikatz.exe</code></li>
+<li><code>impacket-ntlmrelayx</code> - NTLM relay</li>
+<li><code>impacket-smbclient</code> - SMB client</li>
+<li><code>impacket-smbserver</code> - spins up an SMB server</li>
+</ul>
+</li>
+</ul>
+<h3 id="file-transfers">File Transfers<a hidden class="anchor" aria-hidden="true" href="#file-transfers">#</a></h3>
+<ul>
+<li>A basic Python HTTP server works for uploads and downloads both ways.</li>
+<li><code>scp</code> if SSH is available, SMB if that&rsquo;s available.</li>
+<li><code>curl</code> or <code>certutil</code> for pulling binaries onto Windows hosts.</li>
+</ul>
+<h3 id="pivoting">Pivoting<a hidden class="anchor" aria-hidden="true" href="#pivoting">#</a></h3>
+<ul>
+<li><strong>Ligolo-ng</strong> - Tunneling and pivoting via a TUN interface; use <code>240.0.0.1</code> to reach ports only listening locally on the pivot host.</li>
+<li><strong>SSH local/remote port forwarding</strong> - Good for a single port when you don&rsquo;t need a full tunnel.</li>
+</ul>
+<h3 id="websites">Websites<a hidden class="anchor" aria-hidden="true" href="#websites">#</a></h3>
+<ul>
+<li><strong>HackTricks</strong> - A cybersecurity knowledge base covering a huge range of techniques. Worth checking whenever you&rsquo;re stuck on something specific.</li>
+<li><strong>GTFOBins</strong> - Unix binaries that can be abused for privesc, mainly.</li>
+<li><strong>PayloadsAllTheThings</strong> - Payloads for common web exploits.</li>
+<li><strong>Lains List</strong> - List of OSCP boxes for PG play and HTB</li>
+<li><strong>TJ Null List</strong> - List of OSCP boxes for PG play and HTB (outdated but still good)</li>
+<li><strong>Reverse Shell Generator (revshells.com)</strong> - Generates reverse shells in various formats.</li>
+<li><strong>0xdf blog</strong> - HTB blog with writeups</li>
+<li><strong>ippsec</strong> - YouTube videos for HTB</li>
+</ul>
+<h3 id="other">Other<a hidden class="anchor" aria-hidden="true" href="#other">#</a></h3>
+<ul>
+<li><strong>Obsidian</strong> - Markdown notes. Spam use headings, links, bullet points, code blocks. Useful plugins Outliner, Paste mode, Zoom.</li>
+<li><strong>Visual Studio Code</strong> - Reading/modifying PoCs, and occasionally writing my own.</li>
+<li><strong>tmux</strong> - Terminal multiplexer, handy for juggling multiple shells and panes at once.</li>
+<li><strong>vim</strong> - Quick file editing straight from the terminal.</li>
+<li><strong>Burp Suite (Community Edition)</strong> - Web proxy to intercept and edit HTTP requests.</li>
+</ul>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="//localhost:1313/">Beckhamsterz Blog</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

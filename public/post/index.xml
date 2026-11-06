@@ -1,13 +1,27 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Posts on Beckhamster Blog</title>
+    <title>Posts on Beckhamsterz Blog</title>
     <link>//localhost:1313/post/</link>
-    <description>Recent content in Posts on Beckhamster Blog</description>
-    <generator>Hugo -- 0.163.3</generator>
+    <description>Recent content in Posts on Beckhamsterz Blog</description>
+    <generator>Hugo -- 0.154.2</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 08 Jan 2026 21:37:49 +1300</lastBuildDate>
+    <lastBuildDate>Fri, 06 Nov 2026 00:37:49 +1300</lastBuildDate>
     <atom:link href="//localhost:1313/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>OSCP Review: Passing in Under a Month</title>
+      <link>//localhost:1313/post/oscp-review/</link>
+      <pubDate>Fri, 06 Nov 2026 00:37:49 +1300</pubDate>
+      <guid>//localhost:1313/post/oscp-review/</guid>
+      <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;The OSCP (OffSec Certified Professional) is OffSec&amp;rsquo;s junior pentesting cert: the PEN-200 course plus an exam covering web, privilege escalation, pivoting and Active Directory.&lt;/p&gt;
+&lt;p&gt;The exam has two parts:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Hacking phase:&lt;/strong&gt; 23 hours 45 minutes, proctored.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Reporting phase:&lt;/strong&gt; another 24 hours to submit your report.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;You can skip the course material and videos and focus on labs instead, which is part of how I passed in under a month.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>CWES Review: How Pokemon Cards Helped Me Pass the CWES?</title>
       <link>//localhost:1313/post/cwes-review/</link>
