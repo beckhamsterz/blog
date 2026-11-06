@@ -9,13 +9,7 @@
 <meta name="keywords" content="">
 <meta name="description" content="
 Introduction
-The OSCP (OffSec Certified Professional) is OffSec&rsquo;s junior pentesting cert: the PEN-200 course plus an exam covering web, privilege escalation, pivoting and Active Directory.
-The exam has two parts:
-
-Hacking phase: 23 hours 45 minutes, proctored.
-Reporting phase: another 24 hours to submit your report.
-
-You can skip the course material and videos and focus on labs instead. That&rsquo;s part of how I passed in under a month.">
+I passed the OSCP in under a month, barely touching the course material, but I didn&rsquo;t come in cold. I&rsquo;d already passed HackTheBox&rsquo;s CWES and CPTS and had hands-on pentesting experience, which shaped how fast this went and how I approached it. This post covers what labs were actually worth my time, what the exam is really like, and the tips I wish I&rsquo;d had going in.">
 <meta name="author" content="Beckham">
 <link rel="canonical" href="//localhost:1313/post/oscp-review/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.343cc480b9ffc8f04ccbe5e968ad674880cab773ec19905e93033065c1e7a804.css" integrity="sha256-NDzEgLn/yPBMy&#43;XpaK1nSIDKt3PsGZBekwMwZcHnqAQ=" rel="preload stylesheet" as="style">
@@ -146,7 +140,7 @@ You can skip the course material and videos and focus on labs instead. That&rsqu
                 <li>
                     <a href="#pivoting-with-ligolo-ng" aria-label="Pivoting with Ligolo-ng">Pivoting with Ligolo-ng</a></li>
                 <li>
-                    <a href="#windows-privesc" aria-label="Windows privesc">Windows privesc</a></li></ul>
+                    <a href="#windows-foothold-and-privesc" aria-label="Windows: foothold and privesc">Windows: foothold and privesc</a></li></ul>
                 </li>
                 <li>
                     <a href="#my-exam-timeline" aria-label="My Exam Timeline">My Exam Timeline</a></li>
@@ -156,9 +150,11 @@ You can skip the course material and videos and focus on labs instead. That&rsqu
                     <a href="#final-thoughts" aria-label="Final Thoughts">Final Thoughts</a><ul>
                         
                 <li>
-                    <a href="#useful-tools-and-links-" aria-label="Useful Tools and Links :)">Useful Tools and Links :)</a></li>
+                    <a href="#useful-tools-and-references-" aria-label="Useful Tools and References :)">Useful Tools and References :)</a></li>
                 <li>
                     <a href="#enumeration" aria-label="Enumeration">Enumeration</a></li>
+                <li>
+                    <a href="#service-enumeration" aria-label="Service Enumeration">Service Enumeration</a></li>
                 <li>
                     <a href="#shells--payloads" aria-label="Shells &amp; Payloads">Shells &amp; Payloads</a></li>
                 <li>
@@ -183,22 +179,23 @@ You can skip the course material and videos and focus on labs instead. That&rsqu
 
   <div class="post-content"><p><img alt="alt text" loading="lazy" src="/post/oscp-review/images/image.png"></p>
 <h2 id="introduction">Introduction<a hidden class="anchor" aria-hidden="true" href="#introduction">#</a></h2>
-<p>The OSCP (OffSec Certified Professional) is OffSec&rsquo;s junior pentesting cert: the PEN-200 course plus an exam covering web, privilege escalation, pivoting and Active Directory.</p>
-<p>The exam has two parts:</p>
+<p>I passed the OSCP in under a month, barely touching the course material, but I didn&rsquo;t come in cold. I&rsquo;d already passed HackTheBox&rsquo;s CWES and CPTS and had hands-on pentesting experience, which shaped how fast this went and how I approached it. This post covers what labs were actually worth my time, what the exam is really like, and the tips I wish I&rsquo;d had going in.</p>
+<p>The OSCP (OffSec Certified Professional) is OffSec&rsquo;s junior pentesting cert: the PEN-200 course plus an exam covering web, privilege escalation, pivoting and Active Directory. The exam has two parts:</p>
 <ul>
 <li><strong>Hacking phase:</strong> 23 hours 45 minutes, proctored.</li>
 <li><strong>Reporting phase:</strong> another 24 hours to submit your report.</li>
 </ul>
-<p>You can skip the course material and videos and focus on labs instead. That&rsquo;s part of how I passed in under a month.</p>
+<p>You can skip the course material and videos entirely and focus on labs instead. That&rsquo;s a big part of how I passed so quickly, though your mileage will vary depending on your starting point.</p>
 <p><strong>Why I took it:</strong></p>
 <ul>
-<li>It&rsquo;s the cert recruiters ask for.</li>
-<li>I&rsquo;d already passed CWES and CPTS, and found the OSCP an easier version of the CPTS.</li>
+<li>It&rsquo;s the cert HR and recruiters recognise most, by far the most requested on job specs, and the one that tends to open doors.</li>
+<li>I&rsquo;d already passed HackTheBox&rsquo;s CWES and CPTS, and found the OSCP an easier version of the CPTS.</li>
 <li>My employer paid for it :) Thank you to Aura Infosec.</li>
 </ul>
 <h2 id="before-you-start">Before You Start<a hidden class="anchor" aria-hidden="true" href="#before-you-start">#</a></h2>
-<p><strong>Pricing:</strong> The PEN-200 bundle was about $1,749 USD, which includes 90 days of lab access and one exam attempt.</p>
-<p><strong>Who it&rsquo;s for:</strong> Not beginners. You should be comfortable with the Linux command line, Windows basics, core networking, and reading and modifying code. The course is also pretty dense for 90 days of lab access. Even with my background, it took a very focused month just to finish the challenge labs, without even reading the course material or doing the module labs.</p>
+<p><strong>Pricing:</strong> The PEN-200 bundle was about $1,749 USD (~$3k NZD), which includes 90 days of course and lab access with one exam attempt.</p>
+<p><strong>Who it&rsquo;s for:</strong> Not beginners. You should be comfortable with the Linux command line, Windows basics, core networking, and reading and modifying code. The course is also pretty dense for 90 days of lab access. Even with my background, it took a very focused month just to finish the challenge labs, without doing the module labs either.</p>
+<p>If you&rsquo;re not there yet, I&rsquo;d recommend building up with HTB Academy or similar labs first rather than diving straight in, the clock starts the moment you buy the bundle, and 90 days disappears fast if you&rsquo;re still learning fundamentals.</p>
 <h2 id="my-background--preparation">My Background &amp; Preparation<a hidden class="anchor" aria-hidden="true" href="#my-background--preparation">#</a></h2>
 <ul>
 <li>BSc in Computer Science</li>
@@ -208,14 +205,14 @@ You can skip the course material and videos and focus on labs instead. That&rsqu
 <li>All 10 PEN-200 challenge labs</li>
 <li>LainKusanagi OSCP-LK Practice Exam</li>
 </ul>
-<p>My CPTS training was probably the biggest help in preparing for the OSCP. Honestly, I&rsquo;d go as far as saying that anyone who has passed the CPTS should be able to pass the OSCP with relatively little additional practice. My dev background also made modifying exploit code easier, and day-to-day pentesting meant I was already familiar with the pentesting.</p>
+<p>My CPTS training was probably the biggest help in preparing for the OSCP. Honestly, I&rsquo;d go as far as saying that anyone who has passed the CPTS should be able to pass the OSCP with minimal additional practice. My web dev background also gave me strong fundamentals, scripting, networking, reading unfamiliar codebases, which made modifying exploit code far easier, and day-to-day pentesting meant I was already familiar with the methodology.</p>
 <p><img alt="alt text" loading="lazy" src="lion.png"></p>
 <p>I barely read the PEN-200 course material, mostly just dipping into it out of curiosity to learn about some of the out-of-scope techniques. I didn&rsquo;t solve every box alone either; I checked walkthroughs when I got stuck, spammed the Discord help channels quite a bit hahah, and generally tried to cover as many machines as possible.</p>
 <p>The challenge labs were useful but pretty unstable. I ran into VPN issues, mostly around MTU settings, and some services were just buggy. Some labs also felt poorly configured, with so many possible attack paths that I ended up repeating the same privesc checks over and over. Proving Grounds is a better use of your time than HTB, as the difficulty, style and exposure are closer to the actual exam.</p>
 <h3 id="labs-worth-doing">Labs worth doing<a hidden class="anchor" aria-hidden="true" href="#labs-worth-doing">#</a></h3>
-<p>OffSec&rsquo;s numbering, in order:
-0. Secura</p>
-<ol>
+<p>OffSec&rsquo;s challenge labs:</p>
+<ol start="0">
+<li>Secura</li>
 <li>Medtech</li>
 <li>Relia</li>
 <li>Skylark</li>
@@ -227,22 +224,33 @@ You can skip the course material and videos and focus on labs instead. That&rsqu
 <li>Feast</li>
 <li>Laser</li>
 </ol>
-<p>Avoid the first four (0–3). The first three are very basic and offer very little exploitation experience, while Skylark is extremely unstable.</p>
-<p>OSCP A, B, and C (4–6) are the closest to the actual exam. OSCP-LK and Labs 7–10 are also worth doing. After completing those, focus the rest of your time on the Windows machines in Proving Grounds Play.</p>
-<p>If you&rsquo;re looking for something a bit more challenging, try some of the HTB boxes from TJ Null&rsquo;s or Lain&rsquo;s list.</p>
+<p>Avoid the first four (0-3). The first three are very basic and offer very little exploitation experience, while Skylark is extremely unstable, large and out of scope difficulty wise.</p>
+<p>OSCP A, B, and C (4-6) are the closest to the actual exam as it&rsquo;s a retired environment. OSCP-LK and Labs 7-10 are also worth doing. After completing those, focus the rest of your time on the Windows machines in Proving Grounds Play via TJ Null&rsquo;s or Lain&rsquo;s list.</p>
+<p>HTB boxes from TJ Null&rsquo;s or Lain&rsquo;s list are an option if you want more of a challenge, though honestly they&rsquo;re harder than what the exam expects, so your time is better spent on the labs above.</p>
 <h2 id="what-the-exam-is-actually-like">What the Exam Is Actually Like<a hidden class="anchor" aria-hidden="true" href="#what-the-exam-is-actually-like">#</a></h2>
 <p><strong>Format:</strong> Six machines: three standalones worth 20 points each (10 for initial access, 10 for privesc) and a three-machine AD set worth 40. You need 70 to pass. (Note: After December 1, 2026, the scoring system will change.)</p>
 <p><strong>The machines:</strong> A wide mix of services (SNMP, POP3, RPC, SMB and others), but the vulnerabilities aren&rsquo;t exotic. Web is mostly basic payloads, with a lot of enumeration. The exploits aren&rsquo;t hard, but they do take some manual work.</p>
 <ul>
 <li><strong>The first PoC almost never works.</strong> Try several PoCs, change the IP and port, swap the payload, fix paths or version mismatches, and adapt from a writeup.</li>
-<li><strong>The AD set was the easiest part.</strong> It&rsquo;s a narrow slice of AD in the syllabus, but in my exam, and in OSCP A, B and C, it didn&rsquo;t really involve classic &ldquo;AD&rdquo; attacks.</li>
+<li><strong>The AD set was the easiest part.</strong> It&rsquo;s already a narrow slice of AD in the syllabus, but in my exam, and in OSCP A, B and C, it didn&rsquo;t really involve much &ldquo;AD&rdquo; attacks.</li>
 <li><strong>Skip phishing, client side attacks, AWS, AD lateral movement and evasion.</strong> None of it came up.</li>
 </ul>
 <h3 id="pivoting-with-ligolo-ng">Pivoting with Ligolo-ng<a hidden class="anchor" aria-hidden="true" href="#pivoting-with-ligolo-ng">#</a></h3>
-<p>Learn this until it&rsquo;s automatic. Set up the tunnel and add a route to the internal subnet. For ports only listening locally on the pivot host, use <code>240.0.0.1</code>. Write your own step-by-step recipe in your notes.</p>
-<h3 id="windows-privesc">Windows privesc<a hidden class="anchor" aria-hidden="true" href="#windows-privesc">#</a></h3>
-<p><img alt="alt text" loading="lazy" src="/post/oscp-review/images/image4.png">
-Windows privesc is what you really need to focus on. Here&rsquo;s the routine I usually run, in order:</p>
+<p><img alt="alt text" loading="lazy" src="/post/oscp-review/images/zeninaurafarm.png">
+Use <strong>Ligolo-ng</strong> as your default pivoting tool, rather than Chisel or SSH tunnels. It gives you a TUN interface, so once the tunnel is up your tools run as if you were on the internal network. No proxychains needed. Learn it until it&rsquo;s automatic: set up the tunnel, start it, and add a route to the internal subnet.</p>
+<p>For services that only listen locally on the pivot host:</p>
+<ul>
+<li><strong>Several ports, or you&rsquo;re not sure which ones:</strong> stay in Ligolo-ng. Add a route for <code>240.0.0.1</code> and anything you hit there reaches the pivot host&rsquo;s own localhost. You can scan it (<code>nmap -sT -Pn 240.0.0.1</code>) to see what&rsquo;s listening, then connect to whatever you find.</li>
+<li><strong>One known port:</strong> SSH local port forwarding is quicker, if SSH is available.</li>
+</ul>
+<h3 id="windows-foothold-and-privesc">Windows: foothold and privesc<a hidden class="anchor" aria-hidden="true" href="#windows-foothold-and-privesc">#</a></h3>
+<p>If you only have time to get really good at one thing, make it <strong>getting a foothold on Windows machines and escalating privileges on them</strong>. Here&rsquo;s why:</p>
+<ul>
+<li><strong>The AD set is 40 points and entirely Windows.</strong> It&rsquo;s sequential: get the first foothold and the rest tends to follow. Miss it and you&rsquo;re capped at 60, which is an automatic fail.</li>
+<li><strong>You&rsquo;ll likely see 1-2 Windows standalones too.</strong> Getting root on those covers most of the remaining points you need.</li>
+</ul>
+<p><img alt="alt text" loading="lazy" src="/post/oscp-review/images/image4.png"></p>
+<p>Here&rsquo;s the routine I run once I have a shell, in order:</p>
 <ol>
 <li>Check <code>C:\</code> for non-default folders.</li>
 <li>Run <code>tree /F /A .</code> in <code>C:\Users\</code> and look for scripts, notes, backups and credentials.</li>
@@ -250,36 +258,37 @@ Windows privesc is what you really need to focus on. Here&rsquo;s the routine I 
 <li>Run <code>whoami /all</code>, then PrivescCheck, then WinPEAS.</li>
 <li>Check scheduled tasks.</li>
 </ol>
-<p>For post-exploitation, credentials are usually sitting somewhere obvious:</p>
+<p>After that, go nuts with post exploitation. Credentials are usually sitting somewhere obvious, so check:</p>
 <ul>
 <li>Scripts, batch files and scheduled task definitions</li>
 <li>PowerShell history (<code>ConsoleHost_history.txt</code>)</li>
 <li>The registry (saved RDP/autologon creds, PuTTY sessions)</li>
+<li>Databases</li>
 <li>The local SAM database</li>
 <li><code>ProgramData</code> and <code>AppData</code> (app configs, saved sessions, cached creds)</li>
 <li>Config/<code>.ini</code>/<code>.xml</code>/<code>.env</code> files, especially web app and IIS configs</li>
-<li>Browser saved passwords</li>
-<li>Backup or <code>.bak</code> files, and databases</li>
+<li>Browser/App saved passwords</li>
+<li>Backup or <code>.bak</code> files</li>
 <li>Encrypted files (zips, archives, keepass vaults, private keys)</li>
 </ul>
 <h2 id="my-exam-timeline">My Exam Timeline<a hidden class="anchor" aria-hidden="true" href="#my-exam-timeline">#</a></h2>
 <ul>
-<li><strong>tldr:</strong> 5 hours (60 pts) -&gt; +5 hours (70 pts) -&gt; +3 hours (90pts)</li>
+<li><strong>tldr:</strong> 5 hours (60 pts) then +5 hours (70 pts) then +3 hours (90 pts)</li>
 <li><strong>yippee quick W&rsquo;s:</strong> Got to <strong>60 points</strong> (20 from AD, two standalones rooted) within about 5 hours.
 <img alt="alt text" loading="lazy" src="/post/oscp-review/images/image3.png"></li>
-<li><strong>pain and suffering -&gt; yippee:</strong> then spent another 5 hours trying to get the DC and user on the remaining standalone. Passed YIPPPEEE!!! Got <strong>70 points</strong> via user on the third standalone. I didn&rsquo;t enumerate one of the ports enough.</li>
+<li><strong>pain and suffering, then yippee:</strong> then spent another 5 hours trying to get the DC and user on the remaining standalone. Passed YIPPPEEE!!! Got <strong>70 points</strong> via user on the third standalone. I didn&rsquo;t enumerate one of the ports enough.</li>
 <li><strong>more pain and suffering (report):</strong> Spent a couple of hours that night writing the report.</li>
-<li><strong>huh Domain Admin without doing AD attacks:</strong> After some rest, I got the DC in a couple of hours. Finished with <strong>90/100</strong> points.</li>
+<li><strong>huh, Domain Admin without doing AD attacks:</strong> After some rest, I got the DC in a couple of hours. Finished with <strong>90/100</strong> points.</li>
 </ul>
 <p><img alt="alt text" loading="lazy" src="/post/oscp-review/images/waitimgoated.png"></p>
 <p>Stress-wise, I found the exam itself manageable, although I was pretty stressed during the preparation. There&rsquo;s a bit of a stigma around the OSCP being extremely difficult, which I don&rsquo;t entirely agree with. A lot of the machines felt like variations of things I&rsquo;d already practised. That said, the sheer amount of screen time from studying and sitting the exam was exhausting. By the end, I was pretty checked out, both physically and mentally.</p>
 <h2 id="key-tips--tricks">Key Tips &amp; Tricks<a hidden class="anchor" aria-hidden="true" href="#key-tips--tricks">#</a></h2>
 <ul>
-<li><strong>Focus on Windows foothold and privesc.</strong> AD alone is worth 40 points and is entirely Windows, so being solid on Windows gives you a big head start before you even touch the standalones. It&rsquo;s also sequential - get that first flag and the rest tends to follow, whereas missing it caps you at 60, an automatic fail. You&rsquo;ll likely only see 1-2 Windows standalones too, so a foothold (and ideally privesc) on those covers most of the rest of the points you need.</li>
+<li><strong>Windows foothold and privesc.</strong> This is worth more than anything else, see the Windows section above.</li>
 <li><strong>Get volume.</strong> Do lots of practice boxes to get comfortable with common services (HTTP, SMB, FTP, RPC, POP3, databases, etc.). Learn to recognise services, enumerate them properly, and spot misconfigurations.</li>
 <li><strong>Use walkthroughs.</strong> Give the labs an honest attempt, read the walkthrough when you get stuck, work out what you missed, and move on. Add what you learn to your notes.
 <img alt="alt text" loading="lazy" src="/post/oscp-review/images/thukuna.png"></li>
-<li><strong>Think dumber.</strong> The exploits are basic: simple web payloads (SQLi, command injection, LFI), public exploits, and weak or default credentials (<code>admin:admin</code>, username as password). Prioritise simple exploits/low-hanging fruit before attempting complex exploits.</li>
+<li><strong>Think dumber.</strong> The exploits are basic: simple web payloads (SQLi, command injection, LFI), public exploits, publicly exposed credentials and weak or default credentials (<code>admin:admin</code>, username as password). Prioritise simple exploits/low-hanging fruit before attempting complex exploits.</li>
 <li><strong>Enumerate for what looks off:</strong> unusual ports, services that aren&rsquo;t normally installed, odd files. If you&rsquo;re stuck, enumerate again. Most stalls come from missed enumeration, not missing knowledge.</li>
 <li><strong>Post-exploitation to the moon.</strong> GOOOOO NUTS. Don&rsquo;t stop at a root shell. Loot file shares, check history files, configs, browser credentials stores, hunt for plaintext credentials in scripts, databases and the registry, and reuse anything you find across every other service and box. Then chain it into the next machine or the next privilege level.</li>
 <li><strong>Report as you go.</strong> Capture the necessary evidence while you&rsquo;re doing it.</li>
@@ -287,15 +296,25 @@ Windows privesc is what you really need to focus on. Here&rsquo;s the routine I 
 <h2 id="final-thoughts">Final Thoughts<a hidden class="anchor" aria-hidden="true" href="#final-thoughts">#</a></h2>
 <p><img alt="alt text" loading="lazy" src="/post/oscp-review/images/gojo.png">
 The OSCP tested my persistence just as much as my technical skills. A lot of it comes down to sticking to your methodology, working through your notes, continuing to enumerate, and not giving up when you&rsquo;re stuck. Sometimes you just need to think dumber rather than try harder :)</p>
-<p>I found it much more manageable than its reputation suggests, especially coming from a CPTS background. If you&rsquo;ve passed the CPTS, you probably won&rsquo;t need much additional preparation. Focus on Windows (foothold + privesc), enumeration, pivoting and getting plenty of hands-on practice. Don&rsquo;t overcomplicate things.</p>
+<p>I found it much more manageable than its reputation suggests, especially coming from a CPTS background. If you&rsquo;ve passed the CPTS, you probably won&rsquo;t need much additional preparation. Focus on Windows, enumeration, pivoting and getting plenty of hands-on practice. Don&rsquo;t overcomplicate things.</p>
+<p>Despite being overprepared, two HTB certs and 50 HTB boxes under my belt, I went in with surprisingly low confidence. Readiness was never a checklist or a feeling, it&rsquo;s a decision. Thanks to my manager Choi, it was his idea to take the exam, and without his support I probably would&rsquo;ve put it off longer.</p>
 <p>It&rsquo;s still a worthwhile cert to have on your CV, but don&rsquo;t buy into the dogma surrounding its difficulty.</p>
 <p>If you have any questions or just want to chat about the OSCP, feel free to reach out on LinkedIn or Instagram. Always happy to help where I can!</p>
 <p>Good luck!</p>
-<h3 id="useful-tools-and-links-">Useful Tools and Links :)<a hidden class="anchor" aria-hidden="true" href="#useful-tools-and-links-">#</a></h3>
+<h3 id="useful-tools-and-references-">Useful Tools and References :)<a hidden class="anchor" aria-hidden="true" href="#useful-tools-and-references-">#</a></h3>
 <h3 id="enumeration">Enumeration<a hidden class="anchor" aria-hidden="true" href="#enumeration">#</a></h3>
 <ul>
 <li><strong>Nmap</strong> - The standard port scanner.</li>
 <li><strong>feroxbuster</strong> - Directory brute-forcing with recursive search. dirb, ffuf and gobuster are also good alternatives.</li>
+</ul>
+<h3 id="service-enumeration">Service Enumeration<a hidden class="anchor" aria-hidden="true" href="#service-enumeration">#</a></h3>
+<p>Manual tools for poking at specific services once Nmap shows what&rsquo;s open.</p>
+<ul>
+<li><strong>rpcclient</strong> - Talks to MSRPC (port 135/445). Try a null session first (<code>rpcclient -U &quot;&quot; -N &lt;ip&gt;</code>), then <code>enumdomusers</code>, <code>querydispinfo</code> and <code>enumdomgroups</code> to pull users and groups.</li>
+<li><strong>smbclient</strong> - Lists and browses SMB shares (<code>smbclient -L //&lt;ip&gt; -N</code>), and uploads/downloads files. Check every share for readable files and credentials.</li>
+<li><strong>snmpwalk</strong> - Dumps SNMP data (<code>snmpwalk -v2c -c public &lt;ip&gt;</code>). Can leak running processes, installed software, usernames and sometimes credentials in command-line arguments.</li>
+<li><strong>telnet</strong> - Raw connection to plain-text services (POP3, SMTP, FTP, HTTP) for banner grabbing and manually sending commands.</li>
+<li><strong>ftp</strong> - For FTP (port 21): <code>ftp &lt;ip&gt;</code>, try <code>anonymous</code>/blank password, then <code>ls</code>/<code>get</code> to pull files.</li>
 </ul>
 <h3 id="shells--payloads">Shells &amp; Payloads<a hidden class="anchor" aria-hidden="true" href="#shells--payloads">#</a></h3>
 <ul>
@@ -325,7 +344,6 @@ The OSCP tested my persistence just as much as my technical skills. A lot of it 
 <li><code>impacket-mssqlclient</code> - MSSQL client</li>
 <li><code>impacket-secretsdump</code> - alternative to <code>mimikatz.exe</code></li>
 <li><code>impacket-ntlmrelayx</code> - NTLM relay</li>
-<li><code>impacket-smbclient</code> - SMB client</li>
 <li><code>impacket-smbserver</code> - spins up an SMB server</li>
 </ul>
 </li>
@@ -338,7 +356,7 @@ The OSCP tested my persistence just as much as my technical skills. A lot of it 
 </ul>
 <h3 id="pivoting">Pivoting<a hidden class="anchor" aria-hidden="true" href="#pivoting">#</a></h3>
 <ul>
-<li><strong>Ligolo-ng</strong> - Tunneling and pivoting via a TUN interface; use <code>240.0.0.1</code> to reach ports only listening locally on the pivot host.</li>
+<li><strong>Ligolo-ng</strong> - Tunneling and pivoting (use autoroute) via a TUN interface; use <code>240.0.0.1</code> to reach ports only listening locally on the pivot host.</li>
 <li><strong>SSH local/remote port forwarding</strong> - Good for a single port when you don&rsquo;t need a full tunnel.</li>
 </ul>
 <h3 id="websites">Websites<a hidden class="anchor" aria-hidden="true" href="#websites">#</a></h3>
