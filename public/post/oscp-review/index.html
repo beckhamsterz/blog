@@ -197,11 +197,16 @@ I passed the OSCP in under a month, barely touching the course material, but I d
 <p><strong>Who it&rsquo;s for:</strong> Not beginners. You should be comfortable with the Linux command line, Windows basics, core networking, and reading and modifying code. The course is also pretty dense for 90 days of lab access. Even with my background, it took a very focused month just to finish the challenge labs, without doing the module labs either.</p>
 <p>If you&rsquo;re not there yet, I&rsquo;d recommend building up with HTB Academy or similar labs first rather than diving straight in, the clock starts the moment you buy the bundle, and 90 days disappears fast if you&rsquo;re still learning fundamentals.</p>
 <h2 id="my-background--preparation">My Background &amp; Preparation<a hidden class="anchor" aria-hidden="true" href="#my-background--preparation">#</a></h2>
+<p><strong>Background (before enrolling):</strong></p>
 <ul>
 <li>BSc in Computer Science</li>
 <li>~2 years as a full stack developer, then ~6 months as a junior pentester</li>
 <li>CWES and CPTS passed</li>
-<li>~50 HackTheBox machines, ~25 Proving Grounds Play boxes</li>
+<li>~50 HackTheBox machines</li>
+</ul>
+<p><strong>Prep once I enrolled (about a month, inside the 90-day lab access):</strong></p>
+<ul>
+<li>~25 Proving Grounds Play boxes</li>
 <li>All 10 PEN-200 challenge labs</li>
 <li>LainKusanagi OSCP-LK Practice Exam</li>
 </ul>
@@ -237,7 +242,7 @@ I passed the OSCP in under a month, barely touching the course material, but I d
 </ul>
 <h3 id="pivoting-with-ligolo-ng">Pivoting with Ligolo-ng<a hidden class="anchor" aria-hidden="true" href="#pivoting-with-ligolo-ng">#</a></h3>
 <p><img alt="alt text" loading="lazy" src="/post/oscp-review/images/zeninaurafarm.png">
-Use <strong>Ligolo-ng</strong> as your default pivoting tool, rather than Chisel or SSH tunnels. It gives you a TUN interface, so once the tunnel is up your tools run as if you were on the internal network. No proxychains needed. Learn it until it&rsquo;s automatic: set up the tunnel, start it, and add a route to the internal subnet.</p>
+Use <strong>Ligolo-ng</strong> as your default pivoting tool, rather than Chisel. It gives you a TUN interface, so once the tunnel is up your tools run as if you were on the internal network. No proxychains needed. Learn it until it&rsquo;s automatic: set up the tunnel, start it, and add a route to the internal subnet.</p>
 <p>For services that only listen locally on the pivot host:</p>
 <ul>
 <li><strong>Several ports, or you&rsquo;re not sure which ones:</strong> stay in Ligolo-ng. Add a route for <code>240.0.0.1</code> and anything you hit there reaches the pivot host&rsquo;s own localhost. You can scan it (<code>nmap -sT -Pn 240.0.0.1</code>) to see what&rsquo;s listening, then connect to whatever you find.</li>
@@ -281,7 +286,7 @@ Use <strong>Ligolo-ng</strong> as your default pivoting tool, rather than Chisel
 <li><strong>huh, Domain Admin without doing AD attacks:</strong> After some rest, I got the DC in a couple of hours. Finished with <strong>90/100</strong> points.</li>
 </ul>
 <p><img alt="alt text" loading="lazy" src="/post/oscp-review/images/waitimgoated.png"></p>
-<p>Stress-wise, I found the exam itself manageable, although I was pretty stressed during the preparation. There&rsquo;s a bit of a stigma around the OSCP being extremely difficult, which I don&rsquo;t entirely agree with. A lot of the machines felt like variations of things I&rsquo;d already practised. That said, the sheer amount of screen time from studying and sitting the exam was exhausting. By the end, I was pretty checked out, both physically and mentally.</p>
+<p>Stress-wise, I found the exam itself manageable, although I was pretty stressed both before and during preparation. There&rsquo;s a bit of a stigma around the OSCP being extremely difficult, which I don&rsquo;t entirely agree with. A lot of the machines felt like variations of things I&rsquo;d already practised. That said, the sheer amount of screen time from studying and sitting the exam was exhausting. By the end, I was pretty checked out, both physically and mentally.</p>
 <h2 id="key-tips--tricks">Key Tips &amp; Tricks<a hidden class="anchor" aria-hidden="true" href="#key-tips--tricks">#</a></h2>
 <ul>
 <li><strong>Windows foothold and privesc.</strong> This is worth more than anything else, see the Windows section above.</li>
@@ -290,7 +295,7 @@ Use <strong>Ligolo-ng</strong> as your default pivoting tool, rather than Chisel
 <img alt="alt text" loading="lazy" src="/post/oscp-review/images/thukuna.png"></li>
 <li><strong>Think dumber.</strong> The exploits are basic: simple web payloads (SQLi, command injection, LFI), public exploits, publicly exposed credentials and weak or default credentials (<code>admin:admin</code>, username as password). Prioritise simple exploits/low-hanging fruit before attempting complex exploits.</li>
 <li><strong>Enumerate for what looks off:</strong> unusual ports, services that aren&rsquo;t normally installed, odd files. If you&rsquo;re stuck, enumerate again. Most stalls come from missed enumeration, not missing knowledge.</li>
-<li><strong>Post-exploitation to the moon.</strong> GOOOOO NUTS. Don&rsquo;t stop at a root shell. Loot file shares, check history files, configs, browser credentials stores, hunt for plaintext credentials in scripts, databases and the registry, and reuse anything you find across every other service and box. Then chain it into the next machine or the next privilege level.</li>
+<li><strong>Post exploit the AD set:</strong> GOOOOO NUTS. Don&rsquo;t stop at a root shell. Loot file shares, check history files, configs, browser credentials stores, hunt for plaintext credentials in scripts, databases and the registry, and reuse anything you find across every other service and box. Then chain it into the next machine or the next privilege level.</li>
 <li><strong>Report as you go.</strong> Capture the necessary evidence while you&rsquo;re doing it.</li>
 </ul>
 <h2 id="final-thoughts">Final Thoughts<a hidden class="anchor" aria-hidden="true" href="#final-thoughts">#</a></h2>

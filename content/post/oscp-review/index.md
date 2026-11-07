@@ -31,10 +31,14 @@ If you're not there yet, I'd recommend building up with HTB Academy or similar l
 
 ## My Background & Preparation
 
+**Background (before enrolling):**
 - BSc in Computer Science
 - ~2 years as a full stack developer, then ~6 months as a junior pentester
 - CWES and CPTS passed
-- ~50 HackTheBox machines, ~25 Proving Grounds Play boxes
+- ~50 HackTheBox machines
+
+**Prep once I enrolled (about a month, inside the 90-day lab access):**
+- ~25 Proving Grounds Play boxes
 - All 10 PEN-200 challenge labs
 - LainKusanagi OSCP-LK Practice Exam
 
@@ -80,7 +84,7 @@ HTB boxes from TJ Null's or Lain's list are an option if you want more of a chal
 
 ### Pivoting with Ligolo-ng
 ![alt text](images/zeninaurafarm.png)
-Use **Ligolo-ng** as your default pivoting tool, rather than Chisel or SSH tunnels. It gives you a TUN interface, so once the tunnel is up your tools run as if you were on the internal network. No proxychains needed. Learn it until it's automatic: set up the tunnel, start it, and add a route to the internal subnet.
+Use **Ligolo-ng** as your default pivoting tool, rather than Chisel. It gives you a TUN interface, so once the tunnel is up your tools run as if you were on the internal network. No proxychains needed. Learn it until it's automatic: set up the tunnel, start it, and add a route to the internal subnet.
 
 For services that only listen locally on the pivot host:
 - **Several ports, or you're not sure which ones:** stay in Ligolo-ng. Add a route for `240.0.0.1` and anything you hit there reaches the pivot host's own localhost. You can scan it (`nmap -sT -Pn 240.0.0.1`) to see what's listening, then connect to whatever you find.
@@ -125,7 +129,7 @@ After that, go nuts with post exploitation. Credentials are usually sitting some
 
 ![alt text](images/waitimgoated.png)
 
-Stress-wise, I found the exam itself manageable, although I was pretty stressed during the preparation. There's a bit of a stigma around the OSCP being extremely difficult, which I don't entirely agree with. A lot of the machines felt like variations of things I'd already practised. That said, the sheer amount of screen time from studying and sitting the exam was exhausting. By the end, I was pretty checked out, both physically and mentally.
+Stress-wise, I found the exam itself manageable, although I was pretty stressed both before and during preparation. There's a bit of a stigma around the OSCP being extremely difficult, which I don't entirely agree with. A lot of the machines felt like variations of things I'd already practised. That said, the sheer amount of screen time from studying and sitting the exam was exhausting. By the end, I was pretty checked out, both physically and mentally.
 
 ## Key Tips & Tricks
 
@@ -135,7 +139,7 @@ Stress-wise, I found the exam itself manageable, although I was pretty stressed 
 ![alt text](images/thukuna.png)
 - **Think dumber.** The exploits are basic: simple web payloads (SQLi, command injection, LFI), public exploits, publicly exposed credentials and weak or default credentials (`admin:admin`, username as password). Prioritise simple exploits/low-hanging fruit before attempting complex exploits.
 - **Enumerate for what looks off:** unusual ports, services that aren't normally installed, odd files. If you're stuck, enumerate again. Most stalls come from missed enumeration, not missing knowledge.
-- **Post-exploitation to the moon.** GOOOOO NUTS. Don't stop at a root shell. Loot file shares, check history files, configs, browser credentials stores, hunt for plaintext credentials in scripts, databases and the registry, and reuse anything you find across every other service and box. Then chain it into the next machine or the next privilege level.
+- **Post exploit the AD set:** GOOOOO NUTS. Don't stop at a root shell. Loot file shares, check history files, configs, browser credentials stores, hunt for plaintext credentials in scripts, databases and the registry, and reuse anything you find across every other service and box. Then chain it into the next machine or the next privilege level.
 - **Report as you go.** Capture the necessary evidence while you're doing it.
 
 
