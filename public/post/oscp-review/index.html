@@ -233,12 +233,12 @@ I passed the OSCP in under a month, barely touching the course material, but I d
 <p>OSCP A, B, and C (4-6) are the closest to the actual exam as it&rsquo;s a retired environment. OSCP-LK and Labs 7-10 are also worth doing. After completing those, focus the rest of your time on the Windows machines in Proving Grounds Play via TJ Null&rsquo;s or Lain&rsquo;s list.</p>
 <p>HTB boxes from TJ Null&rsquo;s or Lain&rsquo;s list are an option if you want more of a challenge, though honestly they&rsquo;re harder than what the exam expects, so your time is better spent on the labs above.</p>
 <h2 id="what-the-exam-is-actually-like">What the Exam Is Actually Like<a hidden class="anchor" aria-hidden="true" href="#what-the-exam-is-actually-like">#</a></h2>
-<p><strong>Format:</strong> Six machines: three standalones worth 20 points each (10 for initial access, 10 for privesc) and a three-machine AD set worth 40. You need 70 to pass. (Note: After December 1, 2026, the scoring system will change.)</p>
-<p><strong>The machines:</strong> A wide mix of services (SNMP, POP3, RPC, SMB and others), but the vulnerabilities aren&rsquo;t exotic. Web is mostly basic payloads, with a lot of enumeration. The exploits aren&rsquo;t hard, but they do take some manual work.</p>
+<p><strong>Exam format:</strong> Six machines: three standalones worth 20 points each (10 for initial access, 10 for privilege escalation) and a three-machine AD set worth 40 points. You need 70 points to pass. <em>(The scoring system changes after December 1, 2026.)</em></p>
+<p><strong>Machine difficulty:</strong> The standalone machines felt comparable to Easy/Medium Proving Grounds Practice boxes. The vulnerabilities and exploitation techniques were generally pretty basic, with familiar services and straightforward attack paths. The challenge was more about thorough enumeration and putting the pieces together than exploiting anything particularly advanced.</p>
 <ul>
-<li><strong>The first PoC almost never works.</strong> Try several PoCs, change the IP and port, swap the payload, fix paths or version mismatches, and adapt from a writeup.</li>
-<li><strong>The AD set was the easiest part.</strong> It&rsquo;s already a narrow slice of AD in the syllabus, but in my exam, and in OSCP A, B and C, it didn&rsquo;t really involve much &ldquo;AD&rdquo; attacks.</li>
-<li><strong>Skip phishing, client side attacks, AWS, AD lateral movement and evasion.</strong> None of it came up.</li>
+<li><strong>Expect some troubleshooting.</strong> Don&rsquo;t expect PoCs to work out of the box. Be prepared to modify payloads, ports, paths and other parameters to get exploits working.</li>
+<li><strong>AD wasn&rsquo;t particularly AD-heavy.</strong> Despite being worth 40 points, the set didn&rsquo;t involve much in the way of traditional AD attacks. My exam, along with OSCP A, B and C, relied more on basic Windows exploitation, credential hunting and privilege escalation than advanced AD techniques.</li>
+<li><strong>Don&rsquo;t overcomplicate things.</strong> I didn&rsquo;t encounter phishing, client-side attacks, AWS or evasion. Focus on the core techniques rather than trying to master every topic equally.</li>
 </ul>
 <h3 id="pivoting-with-ligolo-ng">Pivoting with Ligolo-ng<a hidden class="anchor" aria-hidden="true" href="#pivoting-with-ligolo-ng">#</a></h3>
 <p><img alt="alt text" loading="lazy" src="/post/oscp-review/images/zeninaurafarm.png">

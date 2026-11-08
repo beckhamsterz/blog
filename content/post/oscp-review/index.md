@@ -74,13 +74,14 @@ HTB boxes from TJ Null's or Lain's list are an option if you want more of a chal
 
 ## What the Exam Is Actually Like
 
-**Format:** Six machines: three standalones worth 20 points each (10 for initial access, 10 for privesc) and a three-machine AD set worth 40. You need 70 to pass. (Note: After December 1, 2026, the scoring system will change.)
+**Exam format:** Six machines: three standalones worth 20 points each (10 for initial access, 10 for privilege escalation) and a three-machine AD set worth 40 points. You need 70 points to pass. *(The scoring system changes after December 1, 2026.)*
 
-**The machines:** A wide mix of services (SNMP, POP3, RPC, SMB and others), but the vulnerabilities aren't exotic. Web is mostly basic payloads, with a lot of enumeration. The exploits aren't hard, but they do take some manual work.
+**Machine difficulty:** The standalone machines felt comparable to Easy/Medium Proving Grounds Practice boxes. The vulnerabilities and exploitation techniques were generally pretty basic, with familiar services and straightforward attack paths. The challenge was more about thorough enumeration and putting the pieces together than exploiting anything particularly advanced.
 
-- **The first PoC almost never works.** Try several PoCs, change the IP and port, swap the payload, fix paths or version mismatches, and adapt from a writeup.
-- **The AD set was the easiest part.** It's already a narrow slice of AD in the syllabus, but in my exam, and in OSCP A, B and C, it didn't really involve much "AD" attacks.
-- **Skip phishing, client side attacks, AWS, AD lateral movement and evasion.** None of it came up.
+- **Expect some troubleshooting.** Don't expect PoCs to work out of the box. Be prepared to modify payloads, ports, paths and other parameters to get exploits working.
+- **AD wasn't particularly AD-heavy.** Despite being worth 40 points, the set didn't involve much in the way of traditional AD attacks. My exam, along with OSCP A, B and C, relied more on basic Windows exploitation, credential hunting and privilege escalation than advanced AD techniques.
+- **Don't overcomplicate things.** I didn't encounter phishing, client-side attacks, AWS or evasion. Focus on the core techniques rather than trying to master every topic equally.
+
 
 ### Pivoting with Ligolo-ng
 ![alt text](images/zeninaurafarm.png)
