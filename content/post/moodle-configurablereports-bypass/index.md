@@ -10,6 +10,8 @@ The Configurable Reports plugin (`moodle-block_configurable_reports`) is a custo
 
 **CWE-184:** Incomplete Denylist
 
+![report](images/report.png)
+
 ## Affected
 `moodle-block_configurable_reports` <= 5.3.2, Configurable Reports plugin
 
