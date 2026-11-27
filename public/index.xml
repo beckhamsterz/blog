@@ -4,10 +4,19 @@
     <title>Beckhamsterz Blog</title>
     <link>//localhost:1313/</link>
     <description>Recent content on Beckhamsterz Blog</description>
-    <generator>Hugo -- 0.154.2</generator>
+    <generator>Hugo -- 0.146.0</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 06 Nov 2026 00:37:49 +1300</lastBuildDate>
+    <lastBuildDate>Tue, 17 Nov 2026 05:37:49 +1300</lastBuildDate>
     <atom:link href="//localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Moodle Configurable Reports SQL Write Bypass</title>
+      <link>//localhost:1313/post/moodle-configurablereports-bypass/</link>
+      <pubDate>Tue, 17 Nov 2026 05:37:49 +1300</pubDate>
+      <guid>//localhost:1313/post/moodle-configurablereports-bypass/</guid>
+      <description>&lt;h2 id=&#34;summary&#34;&gt;Summary&lt;/h2&gt;
+&lt;p&gt;The Configurable Reports plugin (&lt;code&gt;moodle-block_configurable_reports&lt;/code&gt;) is a custom report builder that lets you execute SQL, enforced as read-only by a keyword denylist (&lt;code&gt;sqlsecurity&lt;/code&gt;) but it misses &lt;code&gt;REPLACE&lt;/code&gt;. A report authoring user can use it to overwrite any row in the database, including the administrators password hash, for full site takeover. The plugin is widely used (16,655 active installations) and this bypass has existed for several years.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;CVSS 3.1:&lt;/strong&gt; &lt;code&gt;AV:N/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:H&lt;/code&gt;, 9.1 Critical&lt;/p&gt;</description>
+    </item>
     <item>
       <title>OSCP Review &#43; Tips :)</title>
       <link>//localhost:1313/post/oscp-review/</link>

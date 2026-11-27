@@ -4,23 +4,18 @@
     <title>Posts on Beckhamsterz Blog</title>
     <link>//localhost:1313/post/</link>
     <description>Recent content in Posts on Beckhamsterz Blog</description>
-    <generator>Hugo -- 0.154.2</generator>
+    <generator>Hugo -- 0.146.0</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 06 Nov 2026 00:37:49 +1300</lastBuildDate>
     <atom:link href="//localhost:1313/post/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>OSCP Review: Passing in Under a Month</title>
+      <title>OSCP Review &#43; Tips :)</title>
       <link>//localhost:1313/post/oscp-review/</link>
       <pubDate>Fri, 06 Nov 2026 00:37:49 +1300</pubDate>
       <guid>//localhost:1313/post/oscp-review/</guid>
-      <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
-&lt;p&gt;The OSCP (OffSec Certified Professional) is OffSec&amp;rsquo;s junior pentesting cert: the PEN-200 course plus an exam covering web, privilege escalation, pivoting and Active Directory.&lt;/p&gt;
-&lt;p&gt;The exam has two parts:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Hacking phase:&lt;/strong&gt; 23 hours 45 minutes, proctored.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Reporting phase:&lt;/strong&gt; another 24 hours to submit your report.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;You can skip the course material and videos and focus on labs instead, which is part of how I passed in under a month.&lt;/p&gt;</description>
+      <description>&lt;p&gt;&lt;img alt=&#34;alt text&#34; loading=&#34;lazy&#34; src=&#34;//localhost:1313/post/oscp-review/images/image.png&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;I passed the OSCP in under a month, barely touching the course material, but I didn&amp;rsquo;t come in cold. I&amp;rsquo;d already passed HackTheBox&amp;rsquo;s CWES and CPTS and had hands-on pentesting experience, which shaped how fast this went and how I approached it. This post covers what labs were actually worth my time, what the exam is really like, and the tips I wish I&amp;rsquo;d had going in.&lt;/p&gt;</description>
     </item>
     <item>
       <title>CWES Review: How Pokemon Cards Helped Me Pass the CWES?</title>
@@ -43,6 +38,28 @@ It consists of two parts:&lt;/p&gt;
 &lt;li&gt;5-year goal?: I set a 5-year goal back in 2021 to focus on cybersecurity after finishing my computer science degree. The CWES was part of that vision.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;img alt=&#34;goal&#34; loading=&#34;lazy&#34; src=&#34;//localhost:1313/post/cwes-review/images/2021_goal.png&#34;&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>CWES Review: How Pokemon Cards Helped Me Pass the CWES?</title>
+      <link>//localhost:1313/post/moodle-configurablereports-bypass/</link>
+      <pubDate>Thu, 08 Jan 2026 21:37:49 +1300</pubDate>
+      <guid>//localhost:1313/post/moodle-configurablereports-bypass/</guid>
+      <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
+&lt;h3 id=&#34;what-is-cwes&#34;&gt;What is CWES&lt;/h3&gt;
+&lt;p&gt;The Certified Web Exploitation Specialist (CWES) is a hands-on web penetration testing certification from HackTheBox.
+It consists of two parts:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;The Course Content: Complete HTB&amp;rsquo;s &amp;ldquo;Web Penetration Tester&amp;rdquo; Job Role Path first (20 modules, 279 sections, 22 days).&lt;/li&gt;
+&lt;li&gt;The Exam: Then take a 7-day hands-on exam where you attack a simulated environment and submit a commercial-grade report.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;why-i-took-it&#34;&gt;Why I took it&lt;/h3&gt;
+&lt;p&gt;Three reasons drove me:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Practical Skills Over Theory: I wanted a cert that tested real exploitation, not multiple-choice memorisation.&lt;/li&gt;
+&lt;li&gt;HTB Labs Prep: My goal was to learn how to tackle web footholds in the more advanced platform HTB Labs, and the CWES path seemed like good preparation.&lt;/li&gt;
+&lt;li&gt;5-year goal?: I set a 5-year goal back in 2021 to focus on cybersecurity after finishing my computer science degree. The CWES was part of that vision.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img alt=&#34;goal&#34; loading=&#34;lazy&#34; src=&#34;//localhost:1313/images/2021_goal.png&#34;&gt;&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
