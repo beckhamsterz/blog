@@ -2,6 +2,7 @@
 date: '2026-11-17T05:37:49+13:00'
 draft: false 
 title: 'Moodle Configurable Reports SQL Write Bypass'
+image: images/report.png
 ---
 ## Summary
 The Configurable Reports plugin (`moodle-block_configurable_reports`) is a custom report builder that lets you execute SQL, enforced as read-only by a keyword denylist (`sqlsecurity`) but it misses `REPLACE`. A report authoring user can use it to overwrite any row in the database, including the administrators password hash, for full site takeover. The plugin is widely used (16,655 active installations) and this bypass has existed for several years.
